@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.action.excludePattern" value="/newwebsocket/.*,/websocket"></constant>
+	<!-- <constant name="struts.action.excludePattern" value="/websocket*,^ws://.$"/> -->
+	
+	<package name="emp" extends="struts-default">
+		<!-- 拦截器配置 -->
+		<interceptors>
+			<interceptor name="userInterceptor" class="cn.itcast.action.UserInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="userInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 执行指定的拦截器 -->
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+
+		<!-- 全局视图 -->
+		<global-results>
+			<result name="success">/index.jsp</result>
+
+			<result name="login" type="redirect">/login.jsp</result>
+
+			<!-- 错误视图配置 -->
+			<result name="null">/error/null.jsp</result>
+			<result name="error">/error/error.jsp</result>
+		</global-results>
+
+		<!-- 全局异常 -->
+		<global-exception-mappings>
+			<!-- result 会取找全局视图的名称 -->
+			<exception-mapping result="null"
+				exception="java.lang.NullPointerException"></exception-mapping>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		
+		<!-- Ation实例交给spring容器创建 -->
+
+		<!-- 员工Action -->
+		<action name="emp_*" class="employeeAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/WEB-INF/list.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/WEB-INF/add.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">emp_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/WEB-INF/edit.jsp</result>
+
+
+		</action>
+
+		<!-- 管理员Action -->
+		<action name="admin_*" class="adminAction" method="{1}">
+
+			<!-- 登陆失败 -->
+			<result name="loginFaild">/login.jsp</result>
+
+			<!-- 登陆成功 -->
+			<result name="index" type="redirectAction">oldMan_list</result>
+
+			<!-- 注册成功 -->
+			<result name="registerSuccess">/login.jsp</result>
+
+			<!-- 注册失败 -->
+			<result name="registerFail">/register.jsp</result>
+
+		</action>
+
+		<!-- 老人Action -->
+		<action name="oldMan_*" class="oldManAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/oldManJsp/oldManList.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/oldManJsp/oldManAdd.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">oldMan_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/oldManJsp/oldManEdit.jsp</result>
+
+			<!-- 进入老人用户详细页面 -->
+			<result name="detail">/oldManJsp/oldManDetail.jsp</result>
+
+			<!-- 进入睡枕查看页面 -->
+			<result name="viewPillow" type="redirectAction">pillow_list</result>
+
+			<!-- 进入wifi查看页面 -->
+			<result name="viewWifi" type="redirectAction">wifi_list</result>
+
+			<!-- 进入护工查看页面 -->
+			<result name="viewNurse" type="redirectAction">nurse_list</result>
+
+			<!-- 进入所有报警信息查看页面 -->
+			<result name="viewAlarmHistory" type="redirectAction">alarm_list</result>
+
+
+			<!-- 发生报警页面 -->
+			<result name="alarmRing" type="redirectAction">alarm_ring</result>
+
+			<!-- 进入上传数据页面 -->
+			<result name="viewUploadData">/oldManJsp/oldManUploadData.jsp</result>
+
+			<!-- 进入上传数据页面 -->
+			<result name="viewDownloadData">/oldManJsp/oldManDownloadData.jsp</result>
+		</action>
+
+		<!-- 睡枕Action -->
+		<action name="pillow_*" class="pillowAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/pillowJsp/pillowList.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/pillowJsp/pillowAdd.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">pillow_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/pillowJsp/pillowEdit.jsp</result>
+
+		</action>
+
+		<!-- wifiAction -->
+		<action name="wifi_*" class="wifiAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/wifiJsp/wifiList.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/wifiJsp/wifiAdd.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">wifi_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/wifiJsp/wifiEdit.jsp</result>
+
+		</action>
+
+		<!-- 护工Action -->
+		<action name="nurse_*" class="nurseAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/nurseJsp/nurseList.jsp</result>
+
+			<!-- 进入添加页面视图 -->
+			<result name="add">/nurseJsp/nurseAdd.jsp</result>
+
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">nurse_list</result>
+
+			<!-- 进入修改页面 -->
+			<result name="edit">/nurseJsp/nurseEdit.jsp</result>
+
+		</action>
+
+		<!-- 报警Action -->
+		<action name="alarm_*" class="alarmAction" method="{1}">
+
+			<!-- 列表展示 -->
+			<result name="list">/alarmJsp/alarmList.jsp</result>
+			<!-- 添加成功，进入列表 (防止刷新就多一条记录问题，所以用重定向) -->
+			<result name="listAction" type="redirectAction">alarm_list</result>
+			<!-- 进入修改页面 -->
+			<result name="edit">/alarmJsp/alarmEdit.jsp</result>
+			<!-- 发生报警 -->
+			<result name="alarmRing">/alarmJsp/alarmRing.jsp</result>
+			<!-- 推送的消息 -->
+			<result name="pushMessage">/alarmJsp/alarmPushMessage_1.jsp</result>
+
+		</action>
+
+	</package>
+
+	<package name="struts2" extends="json-default">
+
+		<!-- 老年人注册 -->
+		<action name="userAdd" class="userAddAction">
+			<result type="json" />
+		</action>
+		<!-- 老年人注册 -->
+		<action name="childUserAdd" class="childUserAddAction">
+			<result type="json" />
+		</action>
+		<action name="login" class="loginAction">
+			<result type="json" />
+		</action>
+		<action name="ChildUserlogin" class="childUserloginAction">
+			<result type="json" />
+		</action>
+		<action name="getBreathData" class="getbreathdataAction">
+			<result type="json" />
+		</action>
+
+		<action name="getHeartData" class="getheartdataAction">
+			<result type="json" />
+		</action>
+
+		<action name="getBodyMoveData" class="getbodymovedataAction">
+			<result type="json" />
+		</action>
+
+		<action name="AddOldmanInfo" class="addOldmanInfoAction">
+			<result type="json" />
+		</action>
+
+		<action name="AddPillowDevice" class="addPillowDeviceAction">
+			<result type="json" />
+		</action>
+
+		<action name="AddChildOldmanRelation" class="addChildOldmanRelationAction">
+			<result type="json" />
+		</action>
+
+		<action name="PushSmsService" class="pushMsgAction">
+			<result type="json" />
+		</action>
+
+		<action name="oldmanSelectByRelation" class="oldmanSelectByRelationAction">
+			<result type="json" />
+		</action>
+
+		<!-- 9.1 -->
+		<action name="FirstPageGetConfirmData" class="FirstPageGetConfirmDataAction">
+			<result type="json" />
+		</action>
+
+		<!-- 9.1 -->
+		<action name="OldmanConfirmRelate" class="OldmanConfirmRelateAction">
+			<result type="json" />
+		</action>
+
+
+		<!-- 9.4 -->
+		<action name="updateOldmanPassWord" class="updateOldmanPassWordAction">
+			<result type="json" />
+		</action>
+
+		<!-- 9.4 -->
+		<action name="getPrenightByOldAndDate" class="getPrenightByOldAndDateAction">
+			<result type="json" />
+		</action>
+
+		<!-- 9.26 -->
+		<action name="testSendData" class="testSendDataAction">
+			<result type="json" />
+		</action>
+
+		<!--<action name="AddChildOldRelation" class="addChildOldmanRelationAction"> 
+			<result type="json" /> </action> -->
+	</package>
+
+
+
+</struts>

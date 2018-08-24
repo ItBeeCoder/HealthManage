@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="emp" location="232,165" size="665,2310">
+    <action name="emp_*" location="450,166" size="150,104">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="list.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="add.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="edit.jsp" />
+      </result>
+    </action>
+    <action name="admin_*" location="450,376" size="150,104">
+      <result name="loginFaild">
+        <resourceEdge source="loginFaild" routing="0" target="login.jsp" />
+      </result>
+      <result name="index" />
+      <result name="registerSuccess">
+        <resourceEdge source="registerSuccess" routing="0" target="login.jsp" />
+      </result>
+      <result name="registerFail">
+        <resourceEdge source="registerFail" routing="0" target="register.jsp" />
+      </result>
+    </action>
+    <action name="oldMan_*" location="450,1377" size="150,272">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="oldManList.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="oldManAdd.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="oldManEdit.jsp" />
+      </result>
+      <result name="detail">
+        <resourceEdge source="detail" routing="0" target="oldManDetail.jsp" />
+      </result>
+      <result name="viewPillow" />
+      <result name="viewWifi" />
+      <result name="viewNurse" />
+      <result name="viewAlarmHistory" />
+      <result name="alarmRing" />
+      <result name="viewUploadData">
+        <resourceEdge source="viewUploadData" routing="0" target="oldManUploadData.jsp" />
+      </result>
+      <result name="viewDownloadData">
+        <resourceEdge source="viewDownloadData" routing="0" target="oldManDownloadData.jsp" />
+      </result>
+    </action>
+    <action name="pillow_*" location="450,1986" size="150,104">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="pillowList.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="pillowAdd.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="pillowEdit.jsp" />
+      </result>
+    </action>
+    <action name="wifi_*" location="450,2161" size="150,104">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="wifiList.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="wifiAdd.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="wifiEdit.jsp" />
+      </result>
+    </action>
+    <action name="nurse_*" location="65,2161" size="150,104">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="nurseList.jsp" />
+      </result>
+      <result name="add">
+        <resourceEdge source="add" routing="0" target="nurseAdd.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="nurseEdit.jsp" />
+      </result>
+    </action>
+    <action name="alarm_*" location="65,1636" size="150,104">
+      <result name="list">
+        <resourceEdge source="list" routing="0" target="alarmList.jsp" />
+      </result>
+      <result name="listAction" />
+      <result name="edit">
+        <resourceEdge source="edit" routing="0" target="alarmEdit.jsp" />
+      </result>
+      <result name="alarmRing">
+        <resourceEdge source="alarmRing" routing="0" target="alarmRing.jsp" />
+      </result>
+      <result name="pushMessage">
+        <resourceEdge source="pushMessage" routing="0" target="alarmPushMessage_1.jsp" />
+      </result>
+    </action>
+  </package>
+  <package name="struts2" location="1300,24" size="460,71">
+    <action name="userAdd" location="15,23" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="childUserAdd" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="login" location="260,23" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="ChildUserlogin" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="getBreathData" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="getHeartData" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="getBodyMoveData" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="AddOldmanInfo" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="AddPillowDevice" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="AddChildOldmanRelation" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="PushSmsService" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="oldmanSelectByRelation" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="FirstPageGetConfirmData" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="OldmanConfirmRelate" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="updateOldmanPassWord" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="getPrenightByOldAndDate" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+    <action name="testSendData" location="0,0" size="0,0">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="list.jsp" path="/WEB-INF/list.jsp" location="941,325" size="150,55" />
+  <webResource name="add.jsp" path="/WEB-INF/add.jsp" location="937,150" size="150,55" />
+  <webResource name="edit.jsp" path="/WEB-INF/edit.jsp" location="693,10" size="150,55" />
+  <webResource name="login.jsp" path="/login.jsp" location="1127,430" size="150,55" />
+  <webResource name="register.jsp" path="/register.jsp" location="952,535" size="150,55" />
+  <webResource name="oldManList.jsp" path="/oldManJsp/oldManList.jsp" location="946,1620" size="150,55" />
+  <webResource name="oldManAdd.jsp" path="/oldManJsp/oldManAdd.jsp" location="943,1445" size="150,55" />
+  <webResource name="oldManEdit.jsp" path="/oldManJsp/oldManEdit.jsp" location="944,1270" size="150,55" />
+  <webResource name="oldManDetail.jsp" path="/oldManJsp/oldManDetail.jsp" location="939,1095" size="150,55" />
+  <webResource name="oldManUploadData.jsp" path="/oldManJsp/oldManUploadData.jsp" location="955,920" size="150,55" />
+  <webResource name="oldManDownloadData.jsp" path="/oldManJsp/oldManDownloadData.jsp" location="947,745" size="150,55" />
+  <webResource name="pillowList.jsp" path="/pillowJsp/pillowList.jsp" location="957,2145" size="150,55" />
+  <webResource name="pillowAdd.jsp" path="/pillowJsp/pillowAdd.jsp" location="954,1970" size="150,55" />
+  <webResource name="pillowEdit.jsp" path="/pillowJsp/pillowEdit.jsp" location="955,1795" size="150,55" />
+  <webResource name="wifiList.jsp" path="/wifiJsp/wifiList.jsp" location="517,2530" size="150,55" />
+  <webResource name="wifiAdd.jsp" path="/wifiJsp/wifiAdd.jsp" location="689,2530" size="150,55" />
+  <webResource name="wifiEdit.jsp" path="/wifiJsp/wifiEdit.jsp" location="935,2320" size="150,55" />
+  <webResource name="nurseList.jsp" path="/nurseJsp/nurseList.jsp" location="14,2145" size="150,55" />
+  <webResource name="nurseAdd.jsp" path="/nurseJsp/nurseAdd.jsp" location="11,2320" size="150,55" />
+  <webResource name="nurseEdit.jsp" path="/nurseJsp/nurseEdit.jsp" location="292,2530" size="150,55" />
+  <webResource name="alarmList.jsp" path="/alarmJsp/alarmList.jsp" location="293,10" size="150,55" />
+  <webResource name="alarmEdit.jsp" path="/alarmJsp/alarmEdit.jsp" location="11,1795" size="150,55" />
+  <webResource name="alarmRing.jsp" path="/alarmJsp/alarmRing.jsp" location="9,1970" size="150,55" />
+  <webResource name="alarmPushMessage_1.jsp" path="/alarmJsp/alarmPushMessage_1.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

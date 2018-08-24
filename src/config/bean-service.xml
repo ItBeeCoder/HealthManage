@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Service 需要注入 Dao -->
+
+	<bean id="adminService" class="cn.itcast.service.impl.AdminService">
+		<property name="adminDao" ref="adminDao"></property>
+	</bean>
+
+	<bean id="deptService" class="cn.itcast.service.impl.DeptService">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+
+	<bean id="employeeService" class="cn.itcast.service.impl.EmployeeService">
+		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+
+	<bean id="oldManService" class="cn.itcast.service.impl.OldManService">
+		<property name="oldManDao" ref="oldManDao"></property>
+		<property name="breathDao" ref="breathDao"></property>
+		<property name="heartDao" ref="heartDao"></property>
+		<property name="movementDao" ref="movementDao"></property>
+	</bean>
+
+	<bean id="childService" class="cn.itcast.service.impl.ChildService">
+		<property name="childDao" ref="childDao"></property>
+	</bean>
+
+	<bean id="nurseService" class="cn.itcast.service.impl.NurseService">
+		<property name="nurseDao" ref="nurseDao"></property>
+	</bean>
+
+	<bean id="roleService" class="cn.itcast.service.impl.RoleService">
+		<property name="roleDao" ref="roleDao"></property>
+	</bean>
+
+	<bean id="relationService" class="cn.itcast.service.impl.RelationService">
+		<property name="relationDao" ref="relationDao"></property>
+	</bean>
+
+	<bean id="pillowService" class="cn.itcast.service.impl.PillowService">
+		<property name="pillowDao" ref="pillowDao"></property>
+		<property name="oldManDao" ref="oldManDao"></property>
+		<property name="breathDao" ref="breathDao"></property>
+	</bean>
+
+	<bean id="wifiService" class="cn.itcast.service.impl.WifiService">
+		<property name="wifiDao" ref="wifiDao"></property>
+	</bean>
+
+	<bean id="breathService" class="cn.itcast.service.impl.BreathService">
+		<property name="breathDao" ref="breathDao"></property>
+		<property name="oldManDao" ref="oldManDao"></property>
+	</bean>
+
+	<bean id="heartService" class="cn.itcast.service.impl.HeartService">
+		<property name="heartDao" ref="heartDao"></property>
+		<property name="oldManDao" ref="oldManDao"></property>
+	</bean>
+
+	<bean id="alarmService" class="cn.itcast.service.impl.AlarmService">
+		<property name="alarmDao" ref="alarmDao"></property>
+	</bean>
+
+	<bean id="movementService" class="cn.itcast.service.impl.MovementService">
+		<property name="movementDao" ref="movementDao"></property>
+	</bean>
+
+
+</beans>     
+
+
+
+
+
+
+
+
+
+

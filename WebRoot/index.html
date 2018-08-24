@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket</title>
+    <script type="text/javascript" src="prototype.js"></script>
+    <script type="text/javascript">
+        document.observe("dom:loaded", function () {
+            function log(text) {
+                var value = (new Date).getTime();
+                value += ": ";
+                value += text.escapeHTML();
+                value += $("log").innerHTML;
+                $("log").innerHTML = value;
+            }
+
+            if (!window.WebSocket) {
+                alert("浏览器不支持,换一个吧");
+            }
+
+            var ws;
+
+            $("connectForm").observe("submit", function (e) {
+                e.stop();
+                ws = new WebSocket($F("uri"));
+                ws.onopen = function () {
+                    log("连接到服务器\n");
+                }
+                ws.onmessage = function (e) {
+                    log("服务器信息: " + e.data + "\n");
+                }
+                ws.onclose = function () {
+                    log("断开服务器连接\n");
+
+                    $("uri", "connect").invoke("enable");
+                    $("close").disable();
+                    ws = null;
+                }
+
+                $("uri", "connect").invoke("disable");
+                $("close").enable();
+            });
+            $("close").observe("click", function (e) {
+                e.stop();
+                if (ws) {
+                    ws.close();
+                    ws = null;
+                }
+            });
+            $("sendForm").observe("submit", function (e) {
+                e.stop();
+                if (ws) {
+                    var message = $("message");
+                    ws.send(message.value);
+                    message.value = "";
+                    message.focus();
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+<form id="connectForm">
+    <!-- <input type="text" id="uri" value="ws://192.168.2.40:2333"> -->
+    <input type="text" id="uri" value="ws://127.0.0.1:3333">
+    <input type="submit" id="connect" value="连接">
+    <input type="button" id="close" value="断开" disabled="disabled">
+</form>
+<form id="sendForm">
+    <textarea id="message" rows="3" cols="50"></textarea>
+    <input type="submit" value="发送">
+</form>
+<textarea id="log" rows="30" cols="100" style="font-size: 12px"></textarea>
+</body>
+</html>

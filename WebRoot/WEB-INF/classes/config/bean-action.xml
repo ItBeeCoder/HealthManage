@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Action中需要注入Service -->
+
+	<!-- 1. 员工管理模块 -->
+	<bean id="employeeAction" class="cn.itcast.action.EmployeeAction"
+		scope="prototype">
+		<property name="employeeService" ref="employeeService"></property>
+		<property name="deptService" ref="deptService"></property>
+	</bean>
+
+	<!-- 2. 管理员模块 -->
+	<bean id="adminAction" class="cn.itcast.action.AdminAction" scope="prototype">
+		<property name="adminService" ref="adminService"></property>
+	</bean>
+
+	<!-- 老人模块 -->
+	<bean id="oldManAction" class="cn.itcast.action.OldManAction"
+		scope="prototype">
+		<property name="oldManService" ref="oldManService"></property>
+		<property name="roleService" ref="roleService"></property>
+		<property name="nurseService" ref="nurseService"></property>
+		<property name="breathService" ref="breathService"></property>
+	</bean>
+	
+	<!-- 子女模块 -->
+	<bean id="childAction" class="cn.itcast.action.ChildAction"
+		scope="prototype">
+		<property name="childService" ref="childService"></property>
+	</bean>
+	
+	<!-- 护工设备模块 -->
+	<bean id="nurseAction" class="cn.itcast.action.NurseAction" scope="prototype">
+		<property name="nurseService" ref="nurseService"></property>
+	</bean>
+	
+	<!-- 子女模块 -->
+	<bean id="relationAction" class="cn.itcast.action.RelationAction"
+		scope="prototype">
+		<property name="relationService" ref="relationService"></property>
+	</bean>
+
+	<!-- 睡枕设备模块 -->
+	<bean id="pillowAction" class="cn.itcast.action.PillowAction"
+		scope="prototype">
+		<property name="pillowService" ref="pillowService"></property>
+	</bean>
+
+	<!-- wifi设备模块 -->
+	<bean id="wifiAction" class="cn.itcast.action.WifiAction" scope="prototype">
+		<property name="wifiService" ref="wifiService"></property>
+	</bean>
+	
+	
+	
+	<!-- 报警模块 -->
+	<bean id="alarmAction" class="cn.itcast.action.AlarmAction" scope="prototype">
+		<property name="alarmService" ref="alarmService"></property>
+		<property name="breathService" ref="breathService"></property>
+		<property name="heartService" ref="heartService"></property>
+		<property name="pillowService" ref="pillowService"></property>
+	</bean>
+	
+	
+<!-- 
+
+	呼吸模块
+	<bean id="breathAction" class="........." scope="prototype">
+		<property name="breathService" ref="breathService"></property>
+	</bean>
+
+	心跳模块
+	<bean id="heartAction" class="........." scope="prototype">
+		<property name="heartService" ref="heartService"></property>
+	</bean>
+
+ -->
+ 
+ 
+ 	<!-- by shao --><!-- 老年人注册 -->
+	 <bean id="userAddAction" class="cn.itcast.action.UserAddAction">
+		<property name="oldManService" ref="oldManService"></property>
+	</bean>
+	
+	<!-- by shao -->
+	 <bean id="childUserAddAction" class="cn.itcast.action.ChildUserAddAction">
+		<property name="childService" ref="childService"></property>
+	</bean>
+	
+	<!-- by shao -->
+	<bean id="loginAction" class="cn.itcast.action.LoginAction">
+		<property name="oldManService" ref="oldManService"></property>
+	</bean>
+	
+	<!-- by shao -->
+	<bean id="childUserloginAction" class="cn.itcast.action.ChildUserLoginAction">
+		<property name="childService" ref="childService"></property>
+	</bean>
+	
+	<!-- by shao -->
+ 	<bean id="getbreathdataAction" class="cn.itcast.action.getBreathDataAction">
+		<property name="breathService" ref="breathService"></property>
+		<property name="oldmanService" ref="oldManService"></property>	
+	</bean>
+ 
+<!-- by shao -->
+ 	<bean id="getheartdataAction" class="cn.itcast.action.getHeartDataAction">
+		<property name="heartService" ref="heartService"></property>
+		<property name="oldmanService" ref="oldManService"></property>
+	</bean>
+ 
+ <!-- by shao -->
+ 	<bean id="addOldmanInfoAction" class="cn.itcast.action.AddOldmanInfoAction">
+		<property name="oldmanService" ref="oldManService"></property>
+	</bean>
+ 
+ <!-- by shao -->
+ 	<bean id="addPillowDeviceAction" class="cn.itcast.action.AddDeviceAction">
+		<property name="pillowservice" ref="pillowService"></property>
+		<property name="oldmanService" ref="oldManService"></property>
+	</bean>
+	
+	 <!-- by shao -->
+ 	<bean id="addChildOldmanRelationAction" class="cn.itcast.action.AddChildOldmanRelationAction">
+		<property name="relationService" ref="relationService"></property>
+		<property name="oldManService" ref="oldManService"></property>
+		<property name="childService" ref="childService"></property>
+	</bean>
+	 <!-- by shao -->
+ 	<bean id="pushMsgAction" class="cn.itcast.action.PushMsgAction">
+		<property name="oldManService" ref="oldManService"></property>
+	</bean>
+	
+	
+	<!-- by shao -->
+ 	<bean id="getbodymovedataAction" class="cn.itcast.action.getBodyMoveDataAction">
+		<property name="movemwnetService" ref="movementService"></property>
+		<property name="oldmanService" ref="oldManService"></property><!-- 8.31号加的 -->
+	</bean>
+	
+	<!-- by shao -->
+ 	<bean id="oldmanSelectByRelationAction" class="cn.itcast.action.OldmanByRelationAction">
+		<property name="relationService" ref="relationService"></property>
+		<property name="childService" ref="childService"></property>
+	</bean>
+	
+	<!-- by shao 9.1号加的 -->
+ 	<bean id="FirstPageGetConfirmDataAction" class="cn.itcast.action.FirstPageGetConfirmDataAction">
+		<property name="relationService" ref="relationService"></property>
+		<property name="oldManService" ref="oldManService"></property>
+	</bean>
+	
+	<!-- by shao 9.1号加的 -->
+ 	<bean id="OldmanConfirmRelateAction" class="cn.itcast.action.OldmanConfirmRelateAction">
+		<property name="relationService" ref="relationService"></property>
+		<property name="oldManService" ref="oldManService"></property>
+		<property name="childService" ref="childService"></property>
+	</bean>
+		
+		<bean id="updateOldmanPassWordAction" class="cn.itcast.action.updateOldmanPassWordAction">
+		<property name="oldmanService" ref="oldManService"></property>
+	</bean>
+	
+		<!-- by shao 9.1号加的 -->
+ 	<bean id="getPrenightByOldAndDateAction" class="cn.itcast.action.getPrenightByOldAndDateAction">
+		<property name="breathService" ref="breathService"></property>
+		<property name="oldManService" ref="oldManService"></property>
+	</bean>
+	
+	<!-- by shao 9.26号加的 -->
+ 	<bean id="testSendDataAction" class="cn.itcast.action.TestSendDataAction">
+		<property name="pillowservice" ref="pillowService"></property>
+	</bean>
+		
+	<!-- by shao -->
+ 	<!--<bean id="addChildOldmanRelationAction" class="cn.itcast.action.AddChildOldmanRelationAction">
+		<property name="" ref=""></property>
+	</bean>-->
+  
+</beans>     
+
